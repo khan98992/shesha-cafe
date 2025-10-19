@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shesha Café</title>
+
+<style>
+/* ---------------- Global Styles ---------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff8f0;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* ---------------- Navbar ---------------- */
+nav {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+nav h1 {
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: #ffbe76;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ffbe76;
+}
+
+/* ---------------- Hero Section ---------------- */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
+    url('https://thumbs.dreamstime.com/b/shisha-hookah-smoke-colored-neon-light-dark-background-shisha-hookah-smoke-colored-neon-light-dark-310781585.jpg') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+.hero video {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+
+
+.hero h1, .hero p {
+  position: relative;
+  z-index: 3;
+}
+
+.hero h1 {
+  font-size: 60px;
+  text-shadow: 3px 3px 15px black;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+/* ---------------- About Section ---------------- */
+#about {
+  padding: 100px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+#about img {
+  width: 400px;
+  border-radius: 20px;
+}
+
+#about .text {
+  max-width: 500px;
+}
+
+#about h2 {
+  font-size: 36px;
+  color: #e17055;
+  margin-bottom: 20px;
+}
+
+#about p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* ---------------- Menu Section ---------------- */
+#menu {
+  background-color: #fff0e6;
+  padding: 100px 50px;
+  text-align: center;
+}
+
+#menu h2 {
+  font-size: 36px;
+  color: #e17055;
+  margin-bottom: 40px;
+}
+
+.menu-gallery {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.menu-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-item {
+  flex: 0 0 auto;
+  width: 200px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.menu-item:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.menu-item img {
+  width: 100%;
+  height: 150px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  object-fit: cover;
+}
+
+.menu-item p {
+  font-size: 16px;
+  color: #e17055;
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+/* ---------------- Events Section ---------------- */
+#events {
+  padding: 100px 50px;
+  background: #1b1b1b;
+  color: white;
+  text-align: center;
+}
+
+#events h2 {
+  font-size: 36px;
+  color: #ffbe76;
+  margin-bottom: 40px;
+}
+
+.event-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.event {
+  width: 280px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.event:hover {
+  transform: scale(1.05);
+  background: rgba(255, 190, 118, 0.2);
+}
+
+.event img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.event-content {
+  padding: 20px;
+}
+
+.event h3 {
+  color: #ffbe76;
+  margin-bottom: 10px;
+}
+
+.event p {
+  font-size: 15px;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+/* ---------------- Contact Section ---------------- */
+#contact {
+  padding: 80px 50px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
+
+#contact h2 {
+  color: #ffbe76;
+  margin-bottom: 30px;
+}
+
+.owner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.owner img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffbe76;
+  box-shadow: 0 4px 20px rgba(255,190,118,0.4);
+  margin-bottom: 10px;
+}
+
+.owner p {
+  font-size: 16px;
+  color: #ffbe76;
+  font-weight: 600;
+}
+
+/* ---------------- Footer ---------------- */
+footer {
+  background-color: #222;
+  text-align: center;
+  padding: 15px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #about {
+    flex-direction: column;
+    padding: 50px 20px;
+  }
+
+  #menu {
+    padding: 50px 20px;
+  }
+
+  .menu-item {
+    width: 150px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <h1>Shesha Café</h1>
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+  <video autoplay muted loop>
+    <source src="video5.mp4" type="video/mp4">
+  </video>
+  <h1>Welcome to Shesha Café</h1>
+  <p>Relax. Sip. Smoke. Enjoy the vibes.</p>
+</section>
+
+<!-- About Section -->
+<section id="about">
+  <img src="https://s3-media0.fl.yelpcdn.com/bphoto/915u_M_vuJsYJ6A7JQ3UYw/348s.jpg" alt="Shesha Café">
+  <div class="text">
+    <h2>About Us</h2>
+    <p>Shesha Café is a cozy and stylish place to relax with friends, enjoy premium coffee,
+       and try a variety of shesha flavors. Our café combines comfort, taste, and chill vibes
+       for a perfect hangout experience.</p>
+  </div>
+</section>
+
+<!-- Menu Section -->
+<section id="menu">
+  <h2>Our Menu</h2>
+  <div class="menu-gallery">
+    <div class="menu-item"><img src="https://blakksmoke.com/cdn/shop/files/Blakk_Smoke_Fruit_Shisha_Pineaple.jpg?v=1746800946"><p>Pine-Apple</p></div>
+    <div class="menu-item"><img src="https://harileaf.com/cdn/shop/files/blueberyy.png?v=1715582214&width=1024"><p>Blueberry</p></div>
+    <div class="menu-item"><img src="https://5.imimg.com/data5/ANDROID/Default/2021/2/IF/NU/TP/1012852/prod-20210208-0229292849145126136108559-jpg.jpg"><p>Double Apple</p></div>
+    <div class="menu-item"><img src="https://sheeshasense.us/cdn/shop/files/Mint-1-kg_35947a4d-3a4c-45ef-a40c-71e99d2ce898_1200x1200.jpg?v=1692345307"><p>Mint Flavour</p></div>
+    <div class="menu-item"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772"><p>Cold Coffee</p></div>
+    <div class="menu-item"><img src="https://images.unsplash.com/photo-1551218808-94e220e084d2"><p>Snacks</p></div>
+    <div class="menu-item"><img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03"><p>Drinks</p></div>
+  </div>
+</section>
+
+<!-- Events Section -->
+<section id="events">
+  <h2>Events & Services</h2>
+  <div class="event-container">
+    <div class="event"><img src="https://tentrooftoprestrocafe.com/wp-content/uploads/2025/06/WhatsApp-Image-2023-05-07-at-17.17.13.jpeg"><div class="event-content"><h3>🎉 Birthday Parties</h3><p>Celebrate your special day with lights, music, and Shesha!</p></div></div>
+    <div class="event"><img src="https://szabist-isb.edu.pk/wp-content/uploads/2023/05/13-1-scaled.jpg"><div class="event-content"><h3>🎵 Qawali Nights</h3><p>Every Friday — soulful vibes and live performances.</p></div></div>
+    <div class="event"><img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439"><div class="event-content"><h3>🥂 Private Events</h3><p>Book your space for gatherings and corporate parties.</p></div></div>
+    <div class="event"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30"><div class="event-content"><h3>🎧 Live DJ Nights</h3><p>Every weekend — music, smoke, and chill ambiance!</p></div></div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>📍 G-11 Markaz, Islamabad<br>📞 +92 333 1234567<br>📧 info@sheshacafe.com</p>
+
+  <div class="owner">
+    <img src="https://media.istockphoto.com/id/1497701496/photo/charming-teenage-boy-standing-against-white-background-using-digital-tablet-smiling.jpg?s=612x612&w=0&k=20&c=XHoey-zTmwIRbv3aWHCCr9E8nlH7eykVVEbbg06xxEg=" alt="Cafe Owner">
+    <p>— Owner: Abdul Samad —</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  © 2025 Shesha Café | All Rights Reserved
+</footer>
+
+</body>
+</html>
